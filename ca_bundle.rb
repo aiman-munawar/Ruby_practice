@@ -7,21 +7,61 @@ require 'logger'
 
 # rubocop:disable Lint/UnneededCopDisableDirective, Metrics/LineLength
 module OCI
-  # The contents of the CA bundle (root and intermediate certificates), properties of the CA bundle, and user-provided contextual metadata for the CA bundle.
-  #
-  class Certificates::Models::CaBundle
+  # CA bundle metadata. This object does not contain the CA bundle certificates.
+  class CertificatesManagement::Models::CaBundle
+    LIFECYCLE_STATE_ENUM = [
+      LIFECYCLE_STATE_CREATING = 'CREATING'.freeze,
+      LIFECYCLE_STATE_ACTIVE = 'ACTIVE'.freeze,
+      LIFECYCLE_STATE_UPDATING = 'UPDATING'.freeze,
+      LIFECYCLE_STATE_DELETING = 'DELETING'.freeze,
+      LIFECYCLE_STATE_DELETED = 'DELETED'.freeze,
+      LIFECYCLE_STATE_FAILED = 'FAILED'.freeze,
+      LIFECYCLE_STATE_UNKNOWN_ENUM_VALUE = 'UNKNOWN_ENUM_VALUE'.freeze
+    ].freeze
+
     # **[Required]** The OCID of the CA bundle.
     # @return [String]
     attr_accessor :id
 
-    # **[Required]** A user-friendly name for the CA bundle. Names are unique within a compartment. Valid characters include uppercase or lowercase letters, numbers, hyphens, underscores, and periods.
-    #
+    # **[Required]** A user-friendly name for the CA bundle. Names are unique within a compartment. Avoid entering confidential information. Valid characters include uppercase or lowercase letters, numbers, hyphens, underscores, and periods.
     # @return [String]
     attr_accessor :name
 
-    # **[Required]** Certificates (in PEM format) in the CA bundle. Can be of arbitrary length.
+    # A brief description of the CA bundle.
     # @return [String]
-    attr_accessor :ca_bundle_pem
+    attr_accessor :description
+
+    # **[Required]** A property indicating when the CA bundle was created, expressed in [RFC 3339](https://tools.ietf.org/html/rfc3339) timestamp format.
+    # Example: `2019-04-03T21:10:29.600Z`
+    #
+    # @return [DateTime]
+    attr_accessor :time_created
+
+    # **[Required]** The current lifecycle state of the CA bundle.
+    # @return [String]
+    attr_reader :lifecycle_state
+
+    # Additional information about the current lifecycle state of the CA bundle.
+    # @return [String]
+    attr_accessor :lifecycle_details
+
+    # **[Required]** The OCID of the compartment for the CA bundle.
+    # @return [String]
+    attr_accessor :compartment_id
+
+    # Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+    # For more information, see [Resource Tags](https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm).
+    # Example: `{\"Department\": \"Finance\"}`
+    #
+    # @return [Hash<String, String>]
+    attr_accessor :freeform_tags
+
+    # Defined tags for this resource. Each key is predefined and scoped to a namespace.
+    # For more information, see [Resource Tags](https://docs.cloud.oracle.com/Content/General/Concepts/resourcetags.htm).
+    # Example: `{\"Operations\": {\"CostCenter\": \"42\"}}`
+    #
+    # @return [Hash<String, Hash<String, Object>>]
+    attr_accessor :defined_tags
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -29,7 +69,13 @@ module OCI
         # rubocop:disable Style/SymbolLiteral
         'id': :'id',
         'name': :'name',
-        'ca_bundle_pem': :'caBundlePem'
+        'description': :'description',
+        'time_created': :'timeCreated',
+        'lifecycle_state': :'lifecycleState',
+        'lifecycle_details': :'lifecycleDetails',
+        'compartment_id': :'compartmentId',
+        'freeform_tags': :'freeformTags',
+        'defined_tags': :'definedTags'
         # rubocop:enable Style/SymbolLiteral
       }
     end
@@ -40,7 +86,13 @@ module OCI
         # rubocop:disable Style/SymbolLiteral
         'id': :'String',
         'name': :'String',
-        'ca_bundle_pem': :'String'
+        'description': :'String',
+        'time_created': :'DateTime',
+        'lifecycle_state': :'String',
+        'lifecycle_details': :'String',
+        'compartment_id': :'String',
+        'freeform_tags': :'Hash<String, String>',
+        'defined_tags': :'Hash<String, Hash<String, Object>>'
         # rubocop:enable Style/SymbolLiteral
       }
     end
@@ -53,7 +105,13 @@ module OCI
     # @param [Hash] attributes Model attributes in the form of hash
     # @option attributes [String] :id The value to assign to the {#id} property
     # @option attributes [String] :name The value to assign to the {#name} property
-    # @option attributes [String] :ca_bundle_pem The value to assign to the {#ca_bundle_pem} property
+    # @option attributes [String] :description The value to assign to the {#description} property
+    # @option attributes [DateTime] :time_created The value to assign to the {#time_created} property
+    # @option attributes [String] :lifecycle_state The value to assign to the {#lifecycle_state} property
+    # @option attributes [String] :lifecycle_details The value to assign to the {#lifecycle_details} property
+    # @option attributes [String] :compartment_id The value to assign to the {#compartment_id} property
+    # @option attributes [Hash<String, String>] :freeform_tags The value to assign to the {#freeform_tags} property
+    # @option attributes [Hash<String, Hash<String, Object>>] :defined_tags The value to assign to the {#defined_tags} property
     def initialize(attributes = {})
       return unless attributes.is_a?(Hash)
 
@@ -64,14 +122,62 @@ module OCI
 
       self.name = attributes[:'name'] if attributes[:'name']
 
-      self.ca_bundle_pem = attributes[:'caBundlePem'] if attributes[:'caBundlePem']
+      self.description = attributes[:'description'] if attributes[:'description']
+      self.description = "null" if description.nil? && !attributes.key?(:'description') # rubocop:disable Style/StringLiterals
 
-      raise 'You cannot provide both :caBundlePem and :ca_bundle_pem' if attributes.key?(:'caBundlePem') && attributes.key?(:'ca_bundle_pem')
+      self.time_created = attributes[:'timeCreated'] if attributes[:'timeCreated']
 
-      self.ca_bundle_pem = attributes[:'ca_bundle_pem'] if attributes[:'ca_bundle_pem']
+      raise 'You cannot provide both :timeCreated and :time_created' if attributes.key?(:'timeCreated') && attributes.key?(:'time_created')
+
+      self.time_created = attributes[:'time_created'] if attributes[:'time_created']
+
+      self.lifecycle_state = attributes[:'lifecycleState'] if attributes[:'lifecycleState']
+
+      raise 'You cannot provide both :lifecycleState and :lifecycle_state' if attributes.key?(:'lifecycleState') && attributes.key?(:'lifecycle_state')
+
+      self.lifecycle_state = attributes[:'lifecycle_state'] if attributes[:'lifecycle_state']
+
+      self.lifecycle_details = attributes[:'lifecycleDetails'] if attributes[:'lifecycleDetails']
+      self.lifecycle_details = "null" if lifecycle_details.nil? && !attributes.key?(:'lifecycleDetails') # rubocop:disable Style/StringLiterals
+
+      raise 'You cannot provide both :lifecycleDetails and :lifecycle_details' if attributes.key?(:'lifecycleDetails') && attributes.key?(:'lifecycle_details')
+
+      self.lifecycle_details = attributes[:'lifecycle_details'] if attributes[:'lifecycle_details']
+      self.lifecycle_details = "null" if lifecycle_details.nil? && !attributes.key?(:'lifecycleDetails') && !attributes.key?(:'lifecycle_details') # rubocop:disable Style/StringLiterals
+
+      self.compartment_id = attributes[:'compartmentId'] if attributes[:'compartmentId']
+
+      raise 'You cannot provide both :compartmentId and :compartment_id' if attributes.key?(:'compartmentId') && attributes.key?(:'compartment_id')
+
+      self.compartment_id = attributes[:'compartment_id'] if attributes[:'compartment_id']
+
+      self.freeform_tags = attributes[:'freeformTags'] if attributes[:'freeformTags']
+
+      raise 'You cannot provide both :freeformTags and :freeform_tags' if attributes.key?(:'freeformTags') && attributes.key?(:'freeform_tags')
+
+      self.freeform_tags = attributes[:'freeform_tags'] if attributes[:'freeform_tags']
+
+      self.defined_tags = attributes[:'definedTags'] if attributes[:'definedTags']
+
+      raise 'You cannot provide both :definedTags and :defined_tags' if attributes.key?(:'definedTags') && attributes.key?(:'defined_tags')
+
+      self.defined_tags = attributes[:'defined_tags'] if attributes[:'defined_tags']
     end
     # rubocop:enable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/PerceivedComplexity
     # rubocop:enable Metrics/MethodLength, Layout/EmptyLines, Style/SymbolLiteral
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] lifecycle_state Object to be assigned
+    def lifecycle_state=(lifecycle_state)
+      # rubocop:disable Style/ConditionalAssignment
+      if lifecycle_state && !LIFECYCLE_STATE_ENUM.include?(lifecycle_state)
+        OCI.logger.debug("Unknown value for 'lifecycle_state' [" + lifecycle_state + "]. Mapping to 'LIFECYCLE_STATE_UNKNOWN_ENUM_VALUE'") if OCI.logger
+        @lifecycle_state = LIFECYCLE_STATE_UNKNOWN_ENUM_VALUE
+      else
+        @lifecycle_state = lifecycle_state
+      end
+      # rubocop:enable Style/ConditionalAssignment
+    end
 
     # rubocop:disable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/PerceivedComplexity, Layout/EmptyLines
 
@@ -84,7 +190,13 @@ module OCI
       self.class == other.class &&
         id == other.id &&
         name == other.name &&
-        ca_bundle_pem == other.ca_bundle_pem
+        description == other.description &&
+        time_created == other.time_created &&
+        lifecycle_state == other.lifecycle_state &&
+        lifecycle_details == other.lifecycle_details &&
+        compartment_id == other.compartment_id &&
+        freeform_tags == other.freeform_tags &&
+        defined_tags == other.defined_tags
     end
     # rubocop:enable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/PerceivedComplexity, Layout/EmptyLines
 
@@ -100,7 +212,7 @@ module OCI
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, ca_bundle_pem].hash
+      [id, name, description, time_created, lifecycle_state, lifecycle_details, compartment_id, freeform_tags, defined_tags].hash
     end
     # rubocop:enable Metrics/AbcSize, Layout/EmptyLines
 
