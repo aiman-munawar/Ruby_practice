@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'SuperBubble';
+  src: url('SuperBubble-Rpaj3.ttf') format('truetype');
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: SuperBubble;
+}
+html body{
+    width: 100vw;
+    height: 100vh;
+    /* overflow: hidden; */
+}
+body .page{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.page .bg{
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden;
+}
+.bg video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.page .sun{
+    width: 40vw;
+    height: auto;
+    position: absolute;
+    top: 20%;
+    left: 29%;
+}
+.sun img{
+    width: 100%;
+    height: 100%;
+}
+
+.page h1{
+    color: yellow;
+     text-shadow:
+    -2px 0 0 black,   
+     2px 0 0 black,   
+     0 -2px 0 black, 
+     0  2px 0 black;
+     font-size: 100px;  
+     position: absolute;
+     top: 35%;
+    left: 19%;
+}
+
