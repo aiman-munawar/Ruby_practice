@@ -8,7 +8,7 @@ require 'logger'
 # rubocop:disable Lint/UnneededCopDisableDirective, Metrics/LineLength
 module OCI
   # File format details used for importing dataset
-  class DataLabelingService::Models::ImportFormat
+  class DataLabelingServiceDataplane::Models::ImportFormat
     NAME_ENUM = [
       NAME_JSONL_CONSOLIDATED = 'JSONL_CONSOLIDATED'.freeze,
       NAME_JSONL_COMPACT_PLUS_CONTENT = 'JSONL_COMPACT_PLUS_CONTENT'.freeze,
