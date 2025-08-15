@@ -7,9 +7,9 @@ require 'logger'
 
 # rubocop:disable Lint/UnneededCopDisableDirective, Metrics/LineLength
 module OCI
-  # A dataset is a logical collection of records. The dataset contains all the information necessary to describe a record's source, format, type of annotations allowed on these records, and labels allowed on annotations.
+  # A dataset is a logical collection of records. The dataset contains all the information necessary to describe a record's source, format, the type of annotations allowed for the record, and the labels allowed on annotations.
   #
-  class DataLabelingService::Models::Dataset
+  class DataLabelingServiceDataplane::Models::Dataset
     LIFECYCLE_STATE_ENUM = [
       LIFECYCLE_STATE_CREATING = 'CREATING'.freeze,
       LIFECYCLE_STATE_UPDATING = 'UPDATING'.freeze,
@@ -77,21 +77,21 @@ module OCI
     attr_accessor :annotation_format
 
     # This attribute is required.
-    # @return [OCI::DataLabelingService::Models::DatasetSourceDetails]
+    # @return [OCI::DataLabelingServiceDataplane::Models::DatasetSourceDetails]
     attr_accessor :dataset_source_details
 
     # This attribute is required.
-    # @return [OCI::DataLabelingService::Models::DatasetFormatDetails]
+    # @return [OCI::DataLabelingServiceDataplane::Models::DatasetFormatDetails]
     attr_accessor :dataset_format_details
 
     # This attribute is required.
-    # @return [OCI::DataLabelingService::Models::LabelSet]
+    # @return [OCI::DataLabelingServiceDataplane::Models::LabelSet]
     attr_accessor :label_set
 
-    # @return [OCI::DataLabelingService::Models::InitialRecordGenerationConfiguration]
+    # @return [OCI::DataLabelingServiceDataplane::Models::InitialRecordGenerationConfiguration]
     attr_accessor :initial_record_generation_configuration
 
-    # @return [OCI::DataLabelingService::Models::InitialImportDatasetConfiguration]
+    # @return [OCI::DataLabelingServiceDataplane::Models::InitialImportDatasetConfiguration]
     attr_accessor :initial_import_dataset_configuration
 
     # The labeling instructions for human labelers in rich text format
@@ -164,11 +164,11 @@ module OCI
         'lifecycle_details': :'String',
         'lifecycle_substate': :'String',
         'annotation_format': :'String',
-        'dataset_source_details': :'OCI::DataLabelingService::Models::DatasetSourceDetails',
-        'dataset_format_details': :'OCI::DataLabelingService::Models::DatasetFormatDetails',
-        'label_set': :'OCI::DataLabelingService::Models::LabelSet',
-        'initial_record_generation_configuration': :'OCI::DataLabelingService::Models::InitialRecordGenerationConfiguration',
-        'initial_import_dataset_configuration': :'OCI::DataLabelingService::Models::InitialImportDatasetConfiguration',
+        'dataset_source_details': :'OCI::DataLabelingServiceDataplane::Models::DatasetSourceDetails',
+        'dataset_format_details': :'OCI::DataLabelingServiceDataplane::Models::DatasetFormatDetails',
+        'label_set': :'OCI::DataLabelingServiceDataplane::Models::LabelSet',
+        'initial_record_generation_configuration': :'OCI::DataLabelingServiceDataplane::Models::InitialRecordGenerationConfiguration',
+        'initial_import_dataset_configuration': :'OCI::DataLabelingServiceDataplane::Models::InitialImportDatasetConfiguration',
         'labeling_instructions': :'String',
         'freeform_tags': :'Hash<String, String>',
         'defined_tags': :'Hash<String, Hash<String, Object>>',
@@ -194,11 +194,11 @@ module OCI
     # @option attributes [String] :lifecycle_details The value to assign to the {#lifecycle_details} property
     # @option attributes [String] :lifecycle_substate The value to assign to the {#lifecycle_substate} property
     # @option attributes [String] :annotation_format The value to assign to the {#annotation_format} property
-    # @option attributes [OCI::DataLabelingService::Models::DatasetSourceDetails] :dataset_source_details The value to assign to the {#dataset_source_details} property
-    # @option attributes [OCI::DataLabelingService::Models::DatasetFormatDetails] :dataset_format_details The value to assign to the {#dataset_format_details} property
-    # @option attributes [OCI::DataLabelingService::Models::LabelSet] :label_set The value to assign to the {#label_set} property
-    # @option attributes [OCI::DataLabelingService::Models::InitialRecordGenerationConfiguration] :initial_record_generation_configuration The value to assign to the {#initial_record_generation_configuration} property
-    # @option attributes [OCI::DataLabelingService::Models::InitialImportDatasetConfiguration] :initial_import_dataset_configuration The value to assign to the {#initial_import_dataset_configuration} property
+    # @option attributes [OCI::DataLabelingServiceDataplane::Models::DatasetSourceDetails] :dataset_source_details The value to assign to the {#dataset_source_details} property
+    # @option attributes [OCI::DataLabelingServiceDataplane::Models::DatasetFormatDetails] :dataset_format_details The value to assign to the {#dataset_format_details} property
+    # @option attributes [OCI::DataLabelingServiceDataplane::Models::LabelSet] :label_set The value to assign to the {#label_set} property
+    # @option attributes [OCI::DataLabelingServiceDataplane::Models::InitialRecordGenerationConfiguration] :initial_record_generation_configuration The value to assign to the {#initial_record_generation_configuration} property
+    # @option attributes [OCI::DataLabelingServiceDataplane::Models::InitialImportDatasetConfiguration] :initial_import_dataset_configuration The value to assign to the {#initial_import_dataset_configuration} property
     # @option attributes [String] :labeling_instructions The value to assign to the {#labeling_instructions} property
     # @option attributes [Hash<String, String>] :freeform_tags The value to assign to the {#freeform_tags} property
     # @option attributes [Hash<String, Hash<String, Object>>] :defined_tags The value to assign to the {#defined_tags} property
