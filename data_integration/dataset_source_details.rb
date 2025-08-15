@@ -9,7 +9,7 @@ require 'logger'
 module OCI
   # This allows the customer to specify the source of the dataset.
   # This class has direct subclasses. If you are using this class as input to a service operations then you should favor using a subclass over the base class
-  class DataLabelingService::Models::DatasetSourceDetails
+  class DataLabelingServiceDataplane::Models::DatasetSourceDetails
     SOURCE_TYPE_ENUM = [
       SOURCE_TYPE_OBJECT_STORAGE = 'OBJECT_STORAGE'.freeze,
       SOURCE_TYPE_UNKNOWN_ENUM_VALUE = 'UNKNOWN_ENUM_VALUE'.freeze
@@ -45,10 +45,10 @@ module OCI
     def self.get_subtype(object_hash)
       type = object_hash[:'sourceType'] # rubocop:disable Style/SymbolLiteral
 
-      return 'OCI::DataLabelingService::Models::ObjectStorageSourceDetails' if type == 'OBJECT_STORAGE'
+      return 'OCI::DataLabelingServiceDataplane::Models::ObjectStorageDatasetSourceDetails' if type == 'OBJECT_STORAGE'
 
       # TODO: Log a warning when the subtype is not found.
-      'OCI::DataLabelingService::Models::DatasetSourceDetails'
+      'OCI::DataLabelingServiceDataplane::Models::DatasetSourceDetails'
     end
     # rubocop:enable Metrics/CyclomaticComplexity, Layout/EmptyLines, Metrics/PerceivedComplexity, Metrics/AbcSize
 
