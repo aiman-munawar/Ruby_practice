@@ -9,7 +9,7 @@ require 'logger'
 module OCI
   # Object storage path for the metadata file
   # This class has direct subclasses. If you are using this class as input to a service operations then you should favor using a subclass over the base class
-  class DataLabelingService::Models::ImportMetadataPath
+  class DataLabelingServiceDataplane::Models::ImportMetadataPath
     SOURCE_TYPE_ENUM = [
       SOURCE_TYPE_OBJECT_STORAGE = 'OBJECT_STORAGE'.freeze,
       SOURCE_TYPE_UNKNOWN_ENUM_VALUE = 'UNKNOWN_ENUM_VALUE'.freeze
@@ -47,10 +47,10 @@ module OCI
     def self.get_subtype(object_hash)
       type = object_hash[:'sourceType'] # rubocop:disable Style/SymbolLiteral
 
-      return 'OCI::DataLabelingService::Models::ObjectStorageImportMetadataPath' if type == 'OBJECT_STORAGE'
+      return 'OCI::DataLabelingServiceDataplane::Models::ObjectStorageImportMetadataPath' if type == 'OBJECT_STORAGE'
 
       # TODO: Log a warning when the subtype is not found.
-      'OCI::DataLabelingService::Models::ImportMetadataPath'
+      'OCI::DataLabelingServiceDataplane::Models::ImportMetadataPath'
     end
     # rubocop:enable Metrics/CyclomaticComplexity, Layout/EmptyLines, Metrics/PerceivedComplexity, Metrics/AbcSize
 
