@@ -8,7 +8,7 @@ require_relative 'text_file_type_metadata'
 # rubocop:disable Lint/UnneededCopDisableDirective, Metrics/LineLength
 module OCI
   # Metadata of delimited files.
-  class DataLabelingService::Models::DelimitedFileTypeMetadata < DataLabelingService::Models::TextFileTypeMetadata
+  class DataLabelingServiceDataplane::Models::DelimitedFileTypeMetadata < DataLabelingServiceDataplane::Models::TextFileTypeMetadata
     # The name of a selected column.
     # @return [String]
     attr_accessor :column_name
