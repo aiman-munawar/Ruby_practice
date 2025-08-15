@@ -9,7 +9,7 @@ require 'logger'
 module OCI
   # It specifies how to process the data. Supported formats include DOCUMENT, IMAGE, and TEXT.
   # This class has direct subclasses. If you are using this class as input to a service operations then you should favor using a subclass over the base class
-  class DataLabelingService::Models::DatasetFormatDetails
+  class DataLabelingServiceDataplane::Models::DatasetFormatDetails
     FORMAT_TYPE_ENUM = [
       FORMAT_TYPE_DOCUMENT = 'DOCUMENT'.freeze,
       FORMAT_TYPE_IMAGE = 'IMAGE'.freeze,
@@ -47,12 +47,12 @@ module OCI
     def self.get_subtype(object_hash)
       type = object_hash[:'formatType'] # rubocop:disable Style/SymbolLiteral
 
-      return 'OCI::DataLabelingService::Models::ImageDatasetFormatDetails' if type == 'IMAGE'
-      return 'OCI::DataLabelingService::Models::DocumentDatasetFormatDetails' if type == 'DOCUMENT'
-      return 'OCI::DataLabelingService::Models::TextDatasetFormatDetails' if type == 'TEXT'
+      return 'OCI::DataLabelingServiceDataplane::Models::ImageDatasetFormatDetails' if type == 'IMAGE'
+      return 'OCI::DataLabelingServiceDataplane::Models::DocumentDatasetFormatDetails' if type == 'DOCUMENT'
+      return 'OCI::DataLabelingServiceDataplane::Models::TextDatasetFormatDetails' if type == 'TEXT'
 
       # TODO: Log a warning when the subtype is not found.
-      'OCI::DataLabelingService::Models::DatasetFormatDetails'
+      'OCI::DataLabelingServiceDataplane::Models::DatasetFormatDetails'
     end
     # rubocop:enable Metrics/CyclomaticComplexity, Layout/EmptyLines, Metrics/PerceivedComplexity, Metrics/AbcSize
 
