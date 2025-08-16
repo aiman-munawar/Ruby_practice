@@ -6,17 +6,17 @@ require 'date'
 
 # rubocop:disable Lint/UnneededCopDisableDirective, Metrics/LineLength
 module OCI
-  # It represents a label.
-  class DataLabelingService::Models::Label
-    # An unique name for a label within its dataset.
+  # A label is a string value.  The API validates that it's one of the dataset's pre-defined labels.
+  class DataLabelingServiceDataplane::Models::Label
+    # **[Required]** The label provided by the annotator.
     # @return [String]
-    attr_accessor :name
+    attr_accessor :label
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         # rubocop:disable Style/SymbolLiteral
-        'name': :'name'
+        'label': :'label'
         # rubocop:enable Style/SymbolLiteral
       }
     end
@@ -25,7 +25,7 @@ module OCI
     def self.swagger_types
       {
         # rubocop:disable Style/SymbolLiteral
-        'name': :'String'
+        'label': :'String'
         # rubocop:enable Style/SymbolLiteral
       }
     end
@@ -36,14 +36,14 @@ module OCI
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    # @option attributes [String] :name The value to assign to the {#name} property
+    # @option attributes [String] :label The value to assign to the {#label} property
     def initialize(attributes = {})
       return unless attributes.is_a?(Hash)
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      self.name = attributes[:'name'] if attributes[:'name']
+      self.label = attributes[:'label'] if attributes[:'label']
     end
     # rubocop:enable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/PerceivedComplexity
     # rubocop:enable Metrics/MethodLength, Layout/EmptyLines, Style/SymbolLiteral
@@ -57,7 +57,7 @@ module OCI
       return true if equal?(other)
 
       self.class == other.class &&
-        name == other.name
+        label == other.label
     end
     # rubocop:enable Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/PerceivedComplexity, Layout/EmptyLines
 
@@ -73,7 +73,7 @@ module OCI
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name].hash
+      [label].hash
     end
     # rubocop:enable Metrics/AbcSize, Layout/EmptyLines
 
