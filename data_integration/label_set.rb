@@ -8,9 +8,9 @@ require 'date'
 module OCI
   # An ordered collection of labels that are unique by name.
   #
-  class DataLabelingService::Models::LabelSet
+  class DataLabelingServiceDataplane::Models::LabelSet
     # An ordered collection of labels that are unique by name.
-    # @return [Array<OCI::DataLabelingService::Models::Label>]
+    # @return [Array<OCI::DataLabelingServiceDataplane::Models::LabelName>]
     attr_accessor :items
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -26,7 +26,7 @@ module OCI
     def self.swagger_types
       {
         # rubocop:disable Style/SymbolLiteral
-        'items': :'Array<OCI::DataLabelingService::Models::Label>'
+        'items': :'Array<OCI::DataLabelingServiceDataplane::Models::LabelName>'
         # rubocop:enable Style/SymbolLiteral
       }
     end
@@ -37,7 +37,7 @@ module OCI
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    # @option attributes [Array<OCI::DataLabelingService::Models::Label>] :items The value to assign to the {#items} property
+    # @option attributes [Array<OCI::DataLabelingServiceDataplane::Models::LabelName>] :items The value to assign to the {#items} property
     def initialize(attributes = {})
       return unless attributes.is_a?(Hash)
 
