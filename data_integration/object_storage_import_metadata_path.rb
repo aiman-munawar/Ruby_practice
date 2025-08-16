@@ -8,7 +8,7 @@ require_relative 'import_metadata_path'
 # rubocop:disable Lint/UnneededCopDisableDirective, Metrics/LineLength
 module OCI
   # Object Storage details for import metadata path.
-  class DataLabelingService::Models::ObjectStorageImportMetadataPath < DataLabelingService::Models::ImportMetadataPath
+  class DataLabelingServiceDataplane::Models::ObjectStorageImportMetadataPath < DataLabelingServiceDataplane::Models::ImportMetadataPath
     # **[Required]** Bucket namespace name
     # @return [String]
     attr_accessor :namespace
