@@ -7,7 +7,7 @@ require 'date'
 # rubocop:disable Lint/UnneededCopDisableDirective, Metrics/LineLength
 module OCI
   # The initial generate records configuration. It generates records from the dataset's source.
-  class DataLabelingService::Models::InitialRecordGenerationConfiguration
+  class DataLabelingServiceDataplane::Models::InitialRecordGenerationConfiguration
     # The maximum number of records to generate.
     # @return [Float]
     attr_accessor :limit
