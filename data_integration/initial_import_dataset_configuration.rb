@@ -7,13 +7,13 @@ require 'date'
 # rubocop:disable Lint/UnneededCopDisableDirective, Metrics/LineLength
 module OCI
   # Initial import dataset configuration. Allows user to create dataset from existing dataset files.
-  class DataLabelingService::Models::InitialImportDatasetConfiguration
+  class DataLabelingServiceDataplane::Models::InitialImportDatasetConfiguration
     # This attribute is required.
-    # @return [OCI::DataLabelingService::Models::ImportFormat]
+    # @return [OCI::DataLabelingServiceDataplane::Models::ImportFormat]
     attr_accessor :import_format
 
     # This attribute is required.
-    # @return [OCI::DataLabelingService::Models::ImportMetadataPath]
+    # @return [OCI::DataLabelingServiceDataplane::Models::ImportMetadataPath]
     attr_accessor :import_metadata_path
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -30,8 +30,8 @@ module OCI
     def self.swagger_types
       {
         # rubocop:disable Style/SymbolLiteral
-        'import_format': :'OCI::DataLabelingService::Models::ImportFormat',
-        'import_metadata_path': :'OCI::DataLabelingService::Models::ImportMetadataPath'
+        'import_format': :'OCI::DataLabelingServiceDataplane::Models::ImportFormat',
+        'import_metadata_path': :'OCI::DataLabelingServiceDataplane::Models::ImportMetadataPath'
         # rubocop:enable Style/SymbolLiteral
       }
     end
@@ -42,8 +42,8 @@ module OCI
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    # @option attributes [OCI::DataLabelingService::Models::ImportFormat] :import_format The value to assign to the {#import_format} property
-    # @option attributes [OCI::DataLabelingService::Models::ImportMetadataPath] :import_metadata_path The value to assign to the {#import_metadata_path} property
+    # @option attributes [OCI::DataLabelingServiceDataplane::Models::ImportFormat] :import_format The value to assign to the {#import_format} property
+    # @option attributes [OCI::DataLabelingServiceDataplane::Models::ImportMetadataPath] :import_metadata_path The value to assign to the {#import_metadata_path} property
     def initialize(attributes = {})
       return unless attributes.is_a?(Hash)
 
