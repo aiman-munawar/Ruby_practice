@@ -9,7 +9,7 @@ require 'logger'
 module OCI
   # Metadata for files with text content.
   # This class has direct subclasses. If you are using this class as input to a service operations then you should favor using a subclass over the base class
-  class DataLabelingService::Models::TextFileTypeMetadata
+  class DataLabelingServiceDataplane::Models::TextFileTypeMetadata
     FORMAT_TYPE_ENUM = [
       FORMAT_TYPE_DELIMITED = 'DELIMITED'.freeze,
       FORMAT_TYPE_UNKNOWN_ENUM_VALUE = 'UNKNOWN_ENUM_VALUE'.freeze
@@ -45,10 +45,10 @@ module OCI
     def self.get_subtype(object_hash)
       type = object_hash[:'formatType'] # rubocop:disable Style/SymbolLiteral
 
-      return 'OCI::DataLabelingService::Models::DelimitedFileTypeMetadata' if type == 'DELIMITED'
+      return 'OCI::DataLabelingServiceDataplane::Models::DelimitedFileTypeMetadata' if type == 'DELIMITED'
 
       # TODO: Log a warning when the subtype is not found.
-      'OCI::DataLabelingService::Models::TextFileTypeMetadata'
+      'OCI::DataLabelingServiceDataplane::Models::TextFileTypeMetadata'
     end
     # rubocop:enable Metrics/CyclomaticComplexity, Layout/EmptyLines, Metrics/PerceivedComplexity, Metrics/AbcSize
 
