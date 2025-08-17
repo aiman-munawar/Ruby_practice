@@ -8,8 +8,8 @@ require_relative 'dataset_format_details'
 # rubocop:disable Lint/UnneededCopDisableDirective, Metrics/LineLength
 module OCI
   # It indicates the dataset is comprised of TXT files.
-  class DataLabelingService::Models::TextDatasetFormatDetails < DataLabelingService::Models::DatasetFormatDetails
-    # @return [OCI::DataLabelingService::Models::TextFileTypeMetadata]
+  class DataLabelingServiceDataplane::Models::TextDatasetFormatDetails < DataLabelingServiceDataplane::Models::DatasetFormatDetails
+    # @return [OCI::DataLabelingServiceDataplane::Models::TextFileTypeMetadata]
     attr_accessor :text_file_type_metadata
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -27,7 +27,7 @@ module OCI
       {
         # rubocop:disable Style/SymbolLiteral
         'format_type': :'String',
-        'text_file_type_metadata': :'OCI::DataLabelingService::Models::TextFileTypeMetadata'
+        'text_file_type_metadata': :'OCI::DataLabelingServiceDataplane::Models::TextFileTypeMetadata'
         # rubocop:enable Style/SymbolLiteral
       }
     end
@@ -38,7 +38,7 @@ module OCI
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
-    # @option attributes [OCI::DataLabelingService::Models::TextFileTypeMetadata] :text_file_type_metadata The value to assign to the {#text_file_type_metadata} property
+    # @option attributes [OCI::DataLabelingServiceDataplane::Models::TextFileTypeMetadata] :text_file_type_metadata The value to assign to the {#text_file_type_metadata} property
     def initialize(attributes = {})
       return unless attributes.is_a?(Hash)
 
